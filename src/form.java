@@ -1,12 +1,16 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 
 /**
  *
  * @author fuadhassan
  */
 public class form extends javax.swing.JFrame {
-
+    public static final String delimiter = ",";
     /**
      * Creates new form form
      */
@@ -156,7 +160,7 @@ public class form extends javax.swing.JFrame {
         }
         else{
             String data[] = {txtName.getText(),txtSubject.getText(),txtCode.getText()};
-
+            writefromafile(data);
             DefaultTableModel tableModel = (DefaultTableModel)jTable1.getModel();
             tableModel.addRow(data);
             JOptionPane.showMessageDialog(this, "Added");
@@ -192,6 +196,40 @@ public class form extends javax.swing.JFrame {
 
 
 
+
+    public static void readfromafile() {
+        String line;
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("src/data.csv"));
+            //String line = " ";
+            String[] tempArr;
+            while((line=reader.readLine())!=null){
+                tempArr = line.split(delimiter);
+                String data[] = {tempArr[0],tempArr[1],tempArr[2]};
+                DefaultTableModel tableModel = (DefaultTableModel)jTable1.getModel();
+                tableModel.addRow(data);
+                txtName.setText("");
+                txtSubject.setText("");
+                txtCode.setText("");
+            }
+            reader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void writefromafile(String data[]){
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("src/dataWriter.txt"));
+            //for (int i = 0; i <data.length; i++){
+                writer.append("hello");
+                System.out.println(data[0]+","+data[1]+","+data[2]);
+            //}
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
     /**
      * @param args the command line arguments
      */
@@ -223,6 +261,7 @@ public class form extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new form().setVisible(true);
+                readfromafile();
             }
         });
     }
@@ -234,10 +273,10 @@ public class form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txtCode;
-    private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtSubject;
+    private static javax.swing.JTable jTable1;
+    private static javax.swing.JTextField txtCode;
+    private static javax.swing.JTextField txtName;
+    private static javax.swing.JTextField txtSubject;
     // End of variables declaration//GEN-END:variables
 }
 
