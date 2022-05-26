@@ -219,10 +219,11 @@ public class form extends javax.swing.JFrame {
     }
     public static void writefromafile(String data[]){
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("src/dataWriter.txt"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("src/data.csv",true));
             //for (int i = 0; i <data.length; i++){
-                writer.append("hello");
-                System.out.println(data[0]+","+data[1]+","+data[2]);
+                writer.append(data[0]+","+data[1]+","+data[2]+"\n");
+                //System.out.println(data[0]+","+data[1]+","+data[2]);
+                writer.close();
             //}
         }catch (Exception e){
             e.printStackTrace();
