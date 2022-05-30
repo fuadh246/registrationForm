@@ -7,4 +7,4 @@ javac form.java
 java form.java
 ```
 
-![window](https://github.com/fuadh246/password_-generator/blob/master/src/image/window.png)
+![window](https://github.com/fuadh246/registrationForm/blob/master/src/image/window.png)
