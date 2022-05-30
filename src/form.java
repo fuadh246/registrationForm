@@ -39,6 +39,7 @@ public class form extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registration form");
 
         jLabel1.setText("Name");
 
